@@ -1,0 +1,218 @@
+/* 1. Variables globales */
+:root {
+  --font-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --bg-page: #f4f4f4;
+  --text-base: #222;
+  --text-light: #bbb;
+  --brand-dark: #222;
+  --brand-darker: #444;
+  --brand-alt: #666;
+  --link: #0066cc;
+  --link-hover: #004499;
+  --card-bg: #fff;
+  --radius: 6px;
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-strong: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Base Mobile First */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-base);
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-page);
+  color: var(--text-base);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* Encabezado */
+.site-header {
+  background-color: var(--brand-dark);
+  color: #fff;
+  padding: 1rem;
+  box-shadow: var(--shadow-strong);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* Menú */
+.nav-mobile {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.nav-desktop {
+  display: none;
+}
+
+.nav-desktop ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  gap: 1rem;
+}
+
+.nav-desktop a {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: background-color 0.3s ease;
+}
+
+.nav-desktop a:hover {
+  background-color: var(--brand-alt);
+}
+
+/* Tarjetas (noticias + secundarios) */
+.card {
+  background-color: var(--card-bg);
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-strong);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* Noticia principal */
+.noticia-principal {
+  /* reutiliza .card */
+}
+
+.noticia-principal h2 {
+  margin-top: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+
+/* Noticias secundarias */
+.noticias-secundarias {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.noticias-secundarias article {
+  padding: 0.8rem 1rem;
+  box-shadow: var(--shadow-light);
+}
+
+.noticias-secundarias h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Publicidad */
+.publicidad {
+  padding: 1rem;
+  text-align: center;
+}
+
+.publicidad img {
+  border-radius: 4px;
+  box-shadow: var(--shadow-strong);
+}
+
+/* Pie de página */
+.site-footer {
+  background-color: var(--brand-dark);
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* Layout responsivo */
+
+/* Tablet */
+@media (min-width: 768px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .noticias-secundarias {
+    flex-direction: row;
+  }
+
+  .noticias-secundarias article {
+    flex: 1;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .nav-mobile {
+    display: none;
+  }
+
+  .nav-desktop {
+    display: block;
+  }
+
+  main {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .noticia-principal {
+    flex: 2;
+  }
+
+  .noticias-secundarias {
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .publicidad {
+    width: 200px;
+    order: 2;
+  }
+}
+/*–– Full-bleed header & footer ––*/
+.site-header,
+.site-footer {
+  /* 1) Ocupa todo el ancho del viewport */
+  position: relative;
+  width: 100vw;
+  /* 2) Empújalo hacia la izquierda la mitad del viewport,
+        luego lo centras con translateX */
+  left: 50%;
+  transform: translateX(-50%);
+  /* 3) Asegúrate de tener el padding vertical aquí, no horizontal */
+  padding: 1rem 0;
+}
